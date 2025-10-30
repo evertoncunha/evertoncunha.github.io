@@ -1,1 +1,720 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Medical School Graduation Celebration - Alternative Techno DJ Set">
+    <title>Disco Dreamscape | Graduation Party</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-pink: #ff00ff;
+            --deep-purple: #7b2cbf;
+            --turquoise: #00f5ff;
+            --holographic-blue: #00d4ff;
+            --iridescent-silver: #c0c0c0;
+            --cosmic-purple: #9d4edd;
+            --glow-intensity: 0 0 20px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Animated cosmic background */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at center, #1a0033 0%, #000 100%);
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* Floating disco ball */
+        .disco-ball {
+            position: fixed;
+            width: 120px;
+            height: 120px;
+            top: 20%;
+            right: 10%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #fff, #c0c0c0, #808080);
+            box-shadow:
+                0 0 40px rgba(255, 255, 255, 0.5),
+                inset -20px -20px 40px rgba(0, 0, 0, 0.5);
+            animation: rotate 20s linear infinite, float 6s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        /* Gradient orbs floating */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.6;
+            animation: drift 15s infinite ease-in-out;
+            z-index: 1;
+        }
+
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--neon-pink);
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 250px;
+            height: 250px;
+            background: var(--turquoise);
+            bottom: 15%;
+            right: 5%;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--cosmic-purple);
+            top: 60%;
+            left: 50%;
+            animation-delay: -10s;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -50px) scale(1.2); }
+            50% { transform: translate(-30px, 50px) scale(0.9); }
+            75% { transform: translate(30px, 30px) scale(1.1); }
+        }
+
+        /* Main container */
+        .container {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            max-width: 100%;
+        }
+
+        /* Hero section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--neon-pink), var(--turquoise), var(--holographic-blue), var(--deep-purple));
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 5s ease infinite;
+            text-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: var(--iridescent-silver);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        /* Floating navigation portal */
+        .nav-portal {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 0, 255, 0.3), rgba(0, 245, 255, 0.3));
+            border: 2px solid var(--neon-pink);
+            box-shadow:
+                0 0 30px var(--neon-pink),
+                inset 0 0 30px var(--turquoise);
+            animation: portal-pulse 2s ease-in-out infinite;
+            z-index: 100;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .nav-portal:hover {
+            transform: translateX(-50%) scale(1.2);
+            box-shadow: 0 0 50px var(--neon-pink);
+        }
+
+        .nav-portal::before {
+            content: '⚡';
+            font-size: 2rem;
+            animation: spin-reverse 3s linear infinite;
+        }
+
+        @keyframes portal-pulse {
+            0%, 100% {
+                box-shadow:
+                    0 0 30px var(--neon-pink),
+                    inset 0 0 30px var(--turquoise);
+            }
+            50% {
+                box-shadow:
+                    0 0 50px var(--neon-pink),
+                    0 0 80px var(--turquoise),
+                    inset 0 0 40px var(--turquoise);
+            }
+        }
+
+        @keyframes spin-reverse {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+
+        /* Section styles */
+        .section {
+            padding: 60px 20px;
+            margin: 40px 0;
+            position: relative;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            background: rgba(123, 44, 191, 0.1);
+            border: 1px solid rgba(255, 0, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .section h2 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, var(--neon-pink), var(--turquoise));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+
+        /* Floating elements */
+        .floating-element {
+            position: absolute;
+            animation: float-element 8s ease-in-out infinite;
+        }
+
+        .stairs {
+            position: absolute;
+            width: 40px;
+            height: 200px;
+            right: -20px;
+            top: 50%;
+            background: linear-gradient(180deg,
+                transparent 0%,
+                rgba(255, 0, 255, 0.3) 50%,
+                transparent 100%);
+            transform: perspective(300px) rotateY(-45deg);
+            opacity: 0.5;
+        }
+
+        @keyframes float-element {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Info cards */
+        .info-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 0, 255, 0.4);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--turquoise);
+            box-shadow: 0 10px 40px rgba(0, 245, 255, 0.3);
+        }
+
+        .info-card h3 {
+            color: var(--turquoise);
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
+            margin-bottom: 15px;
+        }
+
+        .info-card p {
+            color: var(--iridescent-silver);
+            line-height: 1.6;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        }
+
+        /* Mirrored character silhouette */
+        .character {
+            position: absolute;
+            width: 150px;
+            height: 200px;
+            right: 10%;
+            top: 40%;
+            opacity: 0.7;
+            filter: drop-shadow(0 0 20px var(--neon-pink));
+        }
+
+        .character-body {
+            width: 80px;
+            height: 150px;
+            margin: 0 auto;
+            background: linear-gradient(135deg,
+                rgba(192, 192, 192, 0.8),
+                rgba(255, 0, 255, 0.3));
+            border-radius: 40px 40px 10px 10px;
+            position: relative;
+            animation: character-walk 4s ease-in-out infinite;
+        }
+
+        .character-head {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(192, 192, 192, 0.6));
+            margin: 0 auto -25px;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+        }
+
+        @keyframes character-walk {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            50% { transform: translateX(20px) rotate(5deg); }
+        }
+
+        /* Light trails */
+        .light-trail {
+            position: fixed;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(180deg, transparent, var(--turquoise), transparent);
+            box-shadow: 0 0 10px var(--turquoise);
+            animation: trail-move 8s linear infinite;
+            opacity: 0.6;
+            z-index: 5;
+        }
+
+        @keyframes trail-move {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Glowing text effect */
+        .glow-text {
+            text-shadow:
+                0 0 10px currentColor,
+                0 0 20px currentColor,
+                0 0 30px currentColor;
+        }
+
+        /* Mobile-first adjustments */
+        @media (max-width: 768px) {
+            .disco-ball {
+                width: 80px;
+                height: 80px;
+                top: 15%;
+                right: 5%;
+            }
+
+            .orb {
+                filter: blur(40px);
+            }
+
+            .orb-1, .orb-2, .orb-3 {
+                width: 150px;
+                height: 150px;
+            }
+
+            .character {
+                width: 100px;
+                height: 150px;
+                right: 5%;
+            }
+
+            .nav-portal {
+                width: 60px;
+                height: 60px;
+                bottom: 20px;
+            }
+
+            .section {
+                padding: 40px 15px;
+                margin: 30px 0;
+            }
+        }
+
+        /* Desktop enhancements */
+        @media (min-width: 769px) {
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .hero {
+                padding: 100px 40px;
+            }
+
+            .section {
+                padding: 80px 40px;
+            }
+
+            .disco-ball {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        /* 3D transform effects */
+        .section::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--neon-pink), var(--turquoise), var(--deep-purple), var(--holographic-blue));
+            border-radius: 30px;
+            z-index: -1;
+            opacity: 0.3;
+            animation: border-glow 3s ease infinite;
+        }
+
+        @keyframes border-glow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Scroll reveal animation */
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fade-in-up 1s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-bg" id="cosmicBg"></div>
+
+    <!-- Floating orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Disco ball -->
+    <div class="disco-ball"></div>
+
+    <!-- Light trails -->
+    <div class="light-trail" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="light-trail" style="left: 30%; animation-delay: 2s;"></div>
+    <div class="light-trail" style="left: 50%; animation-delay: 4s;"></div>
+    <div class="light-trail" style="left: 70%; animation-delay: 6s;"></div>
+    <div class="light-trail" style="left: 90%; animation-delay: 1s;"></div>
+
+    <div class="container">
+        <section class="hero fade-in">
+            <h1 class="glow-text">DISCO<br>DREAMSCAPE</h1>
+            <p class="hero-subtitle">Medical School Graduation Celebration</p>
+            <div class="character">
+                <div class="character-head"></div>
+                <div class="character-body"></div>
+            </div>
+        </section>
+
+        <section class="section fade-in" id="about">
+            <div class="stairs floating-element"></div>
+            <h2>Celebrate the Journey</h2>
+            <div class="info-card">
+                <h3>🎓 Graduation Milestone</h3>
+                <p>Join us for an unforgettable celebration marking this incredible achievement. After years of dedication, it's time to dance under the cosmic lights.</p>
+            </div>
+            <div class="info-card">
+                <h3>🎧 Alternative Techno Journey</h3>
+                <p>Experience a sonic voyage through experimental beats and hypnotic rhythms. Our resident DJ will guide you through a night of alternative techno that defies boundaries.</p>
+            </div>
+        </section>
+
+        <section class="section fade-in" id="details">
+            <h2>Event Details</h2>
+            <div class="info-card">
+                <h3>📅 Date & Time</h3>
+                <p>Date and time to be announced. Stay tuned for updates in the digital cosmos.</p>
+            </div>
+            <div class="info-card">
+                <h3>📍 Location</h3>
+                <p>Venue details coming soon. Prepare for a journey into the surreal.</p>
+            </div>
+            <div class="info-card">
+                <h3>✨ What to Expect</h3>
+                <p>An immersive experience blending analog warmth with digital futurism. Prepare for mirror balls, cosmic energy, and beats that transport you to another dimension.</p>
+            </div>
+        </section>
+
+        <section class="section fade-in" id="connect">
+            <h2>Stay Connected</h2>
+            <div class="info-card">
+                <h3>🌌 Join the Cosmic Network</h3>
+                <p>Connect with fellow travelers in this digital dreamscape. More details coming through the portal soon.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Navigation Portal -->
+    <div class="nav-portal" id="navPortal" title="Navigate"></div>
+
+    <script>
+        // Generate stars
+        function createStars() {
+            const cosmicBg = document.getElementById('cosmicBg');
+            const starCount = window.innerWidth < 768 ? 30 : 50;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = star.style.height = Math.random() * 3 + 1 + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                cosmicBg.appendChild(star);
+            }
+        }
+
+        // Navigation portal click handler
+        document.getElementById('navPortal').addEventListener('click', function() {
+            const sections = document.querySelectorAll('.section');
+            const firstSection = sections[0];
+            firstSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        // Smooth scroll on navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Parallax effect on scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const discoBall = document.querySelector('.disco-ball');
+            const orbs = document.querySelectorAll('.orb');
+
+            if (discoBall) {
+                discoBall.style.transform = `translateY(${scrollY * 0.3}px) rotate(${scrollY * 2}deg)`;
+            }
+
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 0.1;
+                orb.style.transform = `translateY(${scrollY * speed}px)`;
+            });
+
+            lastScroll = scrollY;
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fade-in-up 1s ease-out forwards';
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            observer.observe(section);
+        });
+
+        // Add mouse/touch interaction for disco ball
+        const discoBall = document.querySelector('.disco-ball');
+        if (discoBall) {
+            let isDragging = false;
+            let startX, startY, initialX, initialY;
+
+            discoBall.addEventListener('mousedown', startDrag);
+            discoBall.addEventListener('touchstart', startDrag);
+
+            function startDrag(e) {
+                isDragging = true;
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                startX = clientX;
+                startY = clientY;
+                const rect = discoBall.getBoundingClientRect();
+                initialX = rect.left;
+                initialY = rect.top;
+                discoBall.style.transition = 'none';
+            }
+
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('touchmove', drag);
+            document.addEventListener('mouseup', stopDrag);
+            document.addEventListener('touchend', stopDrag);
+
+            function drag(e) {
+                if (!isDragging) return;
+                e.preventDefault();
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                const deltaX = clientX - startX;
+                const deltaY = clientY - startY;
+                discoBall.style.left = (initialX + deltaX) + 'px';
+                discoBall.style.top = (initialY + deltaY) + 'px';
+            }
+
+            function stopDrag() {
+                isDragging = false;
+                discoBall.style.transition = 'all 0.3s ease';
+            }
+        }
+
+        // Initialize
+        createStars();
+
+        // Add random floating particles
+        function createParticles() {
+            const container = document.body;
+            const particleCount = window.innerWidth < 768 ? 5 : 10;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.width = particle.style.height = Math.random() * 4 + 2 + 'px';
+                particle.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
+                particle.style.borderRadius = '50%';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '3';
+                particle.style.boxShadow = `0 0 ${Math.random() * 10 + 5}px currentColor`;
+
+                const duration = Math.random() * 10 + 15;
+                const delay = Math.random() * 5;
+                particle.style.animation = `particle-float ${duration}s ${delay}s infinite ease-in-out`;
+
+                container.appendChild(particle);
+            }
+        }
+
+        // Add particle float animation
+        const style = document.createElement('style');
+        style.textContent += `
+            @keyframes particle-float {
+                0%, 100% {
+                    transform: translate(0, 0) scale(1);
+                    opacity: 0.5;
+                }
+                25% {
+                    transform: translate(20px, -30px) scale(1.2);
+                    opacity: 1;
+                }
+                50% {
+                    transform: translate(-15px, -60px) scale(0.8);
+                    opacity: 0.7;
+                }
+                75% {
+                    transform: translate(30px, -40px) scale(1.1);
+                    opacity: 0.9;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        createParticles();
+    </script>
+</body>
+</html>
